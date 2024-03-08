@@ -1,4 +1,5 @@
 import PictureMain from "./PictureMain"
+import './PictureList.scss'
 
 export default function PicturesList(props) {
 
@@ -6,9 +7,9 @@ export default function PicturesList(props) {
 
 
     return (
-        <div>
+        <div className="picturelist">
             {
-                props.pictures?.total?
+                props.pictures?.total ?
                     props.pictures.results.map((elem) => {
                         return (
                             <PictureMain key={elem.id} username={elem.user.username} imgUrl={elem.urls.full} authorFirstName={elem.user.first_name} authorLastName={elem.user.last_name} />

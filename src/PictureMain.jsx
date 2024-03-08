@@ -9,10 +9,10 @@ export default function PictureMain(props) {
         <div className="picturemain">
             <img src={props.imgUrl} />
             <div>
-                <p>{props.authorFirstName}</p>
-                <p>{props.authorLastName}</p>
+                <p>First Name: <b>{props.authorFirstName}</b></p>
+                <p>Last Name: <b>{props.authorLastName}</b></p>
             </div>
-            <Link to={'/detail/' + props.username}>Author's detail</Link>
+            <Link className="picturemain-link" to={'/detail/' + props.username}>See detail{'>>'}</Link>
         </div>
     )
 }

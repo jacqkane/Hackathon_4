@@ -1,0 +1,9 @@
+.picturelist {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem;
+
+}
