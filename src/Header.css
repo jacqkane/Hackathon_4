@@ -1,0 +1,31 @@
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 50px;
+    background-color: #8aa86a;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.header-container h1 {
+    font-size: 28px;
+    color: #f7f2f2;
+    margin: 0;
+}
+
+.header-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: #363434;
+    transition: color 0.3s;
+}
+
+.header-nav a:hover {
+    color: #666;
+}
