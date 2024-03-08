@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { key } from './key'
+import { key } from './keys'
 import SearchBar from './SearchBar';
 import PicturesList from './PicturesList';
 
