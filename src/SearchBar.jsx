@@ -20,11 +20,11 @@ export default function SearchBar(props) {
 
     return (
         <div className="searchbar">
-            <h3>Search pictures...</h3>
-            <label >Type in {'>>'}
-                <input type="text" name=" " onChange={handleSearchPictures} value={props.searchKeyword} />
+            <h3 className='title'>Search Author Info</h3>
+            {/* <label >Type in {'>>'} */}
+                <input type="text" name=" " placeholder='search here' onChange={handleSearchPictures} value={props.searchKeyword} />
                 <button onClick={handleButtonClick}>Click to search</button>
-            </label>
+            {/* </label> */}
         </div >
     )
 }
