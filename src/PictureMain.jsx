@@ -6,13 +6,13 @@ import { useContext, useState } from "react";
 
 export default function PictureMain(props) {
   const [hovered, setHovered] = useState(false);
-  
+
 
   const { state: { barHeight, barWidth }, dispatch } = useContext(Context);
   return (
     <div
       className="picturemain"
-      style={{'--barWidthstyle': barWidth +'px'}}
+      style={{ '--barWidthstyle': barWidth + 'px', '--barHeighthstyle': barHeight + 'px' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

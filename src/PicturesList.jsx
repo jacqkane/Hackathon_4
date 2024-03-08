@@ -6,6 +6,7 @@ import Context from "./Context"
 export default function PicturesList(props) {
 
     const [width, setWidth] = useState(100)
+    const [height, setHeight] = useState(100)
 
     const { state: { barHeight, barWidth }, dispatch } = useContext(Context);
 
@@ -19,34 +20,51 @@ export default function PicturesList(props) {
         })
     }
 
-    const handleChange = (e) => {
+    const changeBarHeight = (e) => {
+
+        dispatch({
+            type: 'picturesList/barheight',
+            payload: height
+        })
+    }
+
+    const handleChangeWidth = (e) => {
         setWidth(e.target.valueAsNumber)
+    }
+
+    const handleChangeHeight = (e) => {
+        setHeight(e.target.valueAsNumber)
     }
 
 
     return (
         <div className="picturelist">
-        <div className="sliders">
+            <div className="sliders">
                 <div className="sliders-width">
-                    <input onChange={handleChange} value={width} type="range" id="slider-width" name="slider-width" min="100" max="600" />
+                    <input onChange={handleChangeWidth} value={width} type="range" id="slider-width" name="slider-width" min="100" max="600" />
                     <label for="slider-width">{'<<'}Adjust Width</label>
                     <button onClick={changeBarWidth}>confirm</button>
                 </div>
-                
-            
-                
-{ 
-                props.pictures?.total ?
-                    props.pictures.results.map((elem) => {
-                        return (
-                            <PictureMain key={elem.id} username={elem.user.username} imgUrl={elem.urls.full} authorName={elem.user.name} authorLikes={elem.likes}/>
-                        )
-                    })
-                    : 'Loading...'
-}
+                <div className="sliders-height">
+                    <input onChange={handleChangeHeight} value={height} type="range" id="slider-width" name="slider-width" min="100" max="600" />
+                    <label for="slider-width">{'<<'}Adjust Height</label>
+                    <button onClick={changeBarHeight}>confirm</button>
+                </div>
+
+
+
+                {
+                    props.pictures?.total ?
+                        props.pictures.results.map((elem) => {
+                            return (
+                                <PictureMain key={elem.id} username={elem.user.username} imgUrl={elem.urls.full} authorName={elem.user.name} authorLikes={elem.likes} />
+                            )
+                        })
+                        : 'Loading...'
+                }
 
 
             </div>
-            </div>
-        )
+        </div>
+    )
 }
