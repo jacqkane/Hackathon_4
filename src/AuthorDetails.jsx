@@ -1,71 +1,64 @@
-import { useEffect, useState } from 'react'
-import { key } from './keys.js'
-import { useParams } from 'react-router-dom'
-
-
+import { useEffect, useState } from "react";
+import { key } from "./keys.js";
+import { Link, useParams } from "react-router-dom";
+import './AuthorDetails.css'; 
 
 export default function AuthorDetails() {
+  const [authorInfo, setAuthorInfo] = useState(null);
+  const [authorImages, setAuthorImages] = useState(null);
+  const { name } = useParams();
 
-    // const [authorInfo, setAuthorInfo] = useState(null)
-    // const [authorImages, setAuthorImages] = useState(null)
-    // const { name } = useParams();
+  const loadAuthorDetails = async () => {
+    const response = await fetch(
+      `https://api.unsplash.com/users/${name}?client_id=${key}`
+    );
+    const data = await response.json();
+    setAuthorInfo(data);
+  };
 
+  const loadAuthorImages = async () => {
+    const response = await fetch(
+      `https://api.unsplash.com/users/${name}/photos?client_id=${key}`
+    );
+    const data = await response.json();
+    setAuthorImages(data);
+  };
 
-    // const loadAuthorDetails = async () => {
-    //     if (!searchQuery) return;
-    //     const response = await fetch("https://api.unsplash.com/users/" + `${name}` + `?client_id=${key}`)
-    //     const data = await response.json();
+  useEffect(() => {
+    loadAuthorDetails();
+    loadAuthorImages();
+  }, []);
+console.log(authorInfo);
+  return (
+    <div className="authorCard">
+        
+      {authorInfo && authorInfo ? (
+        <div>
+          <div className="authorInfo">
+            <h2>{(authorInfo.name || "N/A")}</h2>
+            <p className="motto">{authorInfo.bio || "No bio available."}</p>
+            <p className="likes">Likes: {authorInfo.total_likes}</p>
+          </div>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
 
-    //     console.log(data)
-
-    //     setAuthorInfo(data);
-    // }
-
-    // const loadAuthorImages = async () => {
-    //     if (!searchQuery) return;
-    //     const response = await fetch("https://api.unsplash.com/users/" + `${name}` + `/photos?client_id=${key}`)
-    //     const data = await response.json();
-
-    //     console.log(data)
-    //     setAuthorImages(data)
-    // }
-
-    // useEffect(() => {
-    //     loadAuthorDetails()
-    //     loadAuthorImages()
-    // }, []);
-
-
-    return (
-        <p>delete it</p>
-        // <div className="authorCard">
-        //     <div className="authorInfo">
-        //         <h2>{'First Name ' + authorInfo.user.first_name + ' - ' + 'Last Name ' + authorInfo.user.last_name}</h2>
-        //         <p>{authorInfo.user.bio}</p>
-        //         {/* <p>{authorInfo.downloads}</p> */}
-        //         <p>{authorInfo.likes}</p>
-        //     </div>
-
-        //     <div className="authorImages">
-        //         <h3>Author's photos</h3>
-        //         <ul>
-        //             {
-        //                 // authorImages.map(photo => (
-        //                 //     <li key={photo.id}>
-        //                 //         <img src={photo.url} alt={photo.alt_description} />
-        //                 //     </li>
-        //                 // ))
-
-        //             }
-
-
-        //         </ul>
-        //     </div>
-        // </div>
-
-
-
-
-
-    )
+      <div className="authorImages">
+        <h3>Author's photos</h3>
+        <ul>
+          {authorImages ? (
+            authorImages.map((photo) => (
+              <li key={photo.id}>
+                <img src={photo.urls.small} alt={"No description"} />
+              </li>
+            ))
+          ) : (
+            <p>No photos available.</p>
+          )}
+        </ul>
+        <Link className="backButton" to="/">Back to Search</Link>
+      </div>
+    </div>
+  );
 }
