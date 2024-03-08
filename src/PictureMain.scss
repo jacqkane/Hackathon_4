@@ -1,15 +1,17 @@
+
+
 .picturemain {
     background-color: lightgrey;
     margin: 1rem;
     border-radius: 0.5rem;
-    width: 300px;
+    width: var(--barWidthstyle);
 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 
     img {
-        width: 300px;
+        width: var(--barWidthstyle);
         border-radius: 0.5rem 0.5rem 0rem 0rem;
     }
 

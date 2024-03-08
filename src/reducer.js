@@ -1,9 +1,19 @@
 export default function reducer(state, action) {
     switch (action.type) {
-        // case '':
-        //     return {
-        //         ...state,
-        //     }
+
+        case 'picturesList/barwidth':
+            return {
+                ...state,
+                barWidth: action.payload
+            }
+
+        case 'picturesList/barheight':
+            return {
+                ...state,
+                barHeight: action.payload
+            }
+
+
     }
     return state;
 }
