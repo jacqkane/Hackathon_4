@@ -9,8 +9,8 @@ import Footer from './Footer.jsx';
 function App() {
 
   const contextObject = {
-    barHeight: 100,
-    barWidth: 100
+    barHeight: 300,
+    barWidth: 300
   };
   const [state, dispatch] = useReducer(reducer, contextObject)
 
