@@ -1,6 +1,22 @@
 .picturemain {
+    background-color: lightgrey;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 
     img {
-        width:100px;
+        width: 300px;
+        border-radius: 0.5rem 0.5rem 0rem 0rem;
     }
+
+    .picturemain-link {
+       text-align: left;
+       margin: 1rem 1rem;
+    }
+
+
 }

@@ -1,4 +1,4 @@
-
+import './SearchBar.scss'
 
 
 export default function SearchBar(props) {
@@ -19,11 +19,11 @@ export default function SearchBar(props) {
     }
 
     return (
-        <div>
-            <h3>This is Searchbar</h3>
-            <label >Search
+        <div className="searchbar">
+            <h3>Search pictures...</h3>
+            <label >Type in {'>>'}
                 <input type="text" name=" " onChange={handleSearchPictures} value={props.searchKeyword} />
-                <button onClick={handleButtonClick}>Click search</button>
+                <button onClick={handleButtonClick}>Click to search</button>
             </label>
         </div >
     )
